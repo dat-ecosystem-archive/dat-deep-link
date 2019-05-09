@@ -1,0 +1,28 @@
+{
+  "name": "dat-deep-link",
+  "version": "0.0.1",
+  "description": "An experiment to define an URI scheme that implements 'hypercore-strong-link'",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test.js"
+  },
+  "keywords": [
+    "dat",
+    "hyper",
+    "hypercore",
+    "hyperdrive",
+    "deep",
+    "links"
+  ],
+  "author": "Joseph Werle <joseph.werle@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dat-encoding": "^5.0.1",
+    "hypercore-strong-link": "^2.0.0"
+  },
+  "devDependencies": {
+    "hyperdrive": "^10.0.0-rc3",
+    "random-access-memory": "^3.1.1",
+    "tape": "^4.10.1"
+  }
+}
