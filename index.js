@@ -23,14 +23,13 @@ function resolve(drive, uri, opts, cb) {
   assert('dat:' === protocol, 'Expecting uri protocol to be dat://')
 
   if (auth && hostname) {
-    assert(64 === auth.length, 'Expecting dat key to be 64 characters')
-    assert(64 === hostname.length, 'Expecting tree hash to be 64 characters')
-    key = encoding.decode(auth)
+    assert(64 === auth.length, 'Expecting tree hash to be 64 characters')
+    assert(64 === hostname.length, 'Expecting key  to be 64 characters')
   } else {
     assert(64 === hostname.length, 'Expecting dat key to be 64 characters')
-    key = encoding.decode(hostname)
   }
 
+  key = encoding.decode(hostname)
   drive.ready(onready)
 
   function ondone(err) {
@@ -92,7 +91,7 @@ function resolve(drive, uri, opts, cb) {
     if ('number' === typeof version) {
       const feed = key
       const seq = (drive._db ? 2 : 0) + version - 1
-      const treeHash = Buffer.from(hostname, 'hex')
+      const treeHash = Buffer.from(auth, 'hex')
       stronglink.verify(drive.metadata, { feed, seq, treeHash }, onverify)
     }
   }
@@ -142,7 +141,7 @@ function generate(drive, pathspec, cb) {
     const treeHash = link.treeHash.toString('hex')
     const feed = link.feed.toString('hex')
     const ver = drive._db ? link.seq - 1 : link.seq + 1
-    const uri = `dat://${feed}@${treeHash}:${ver}/${pathspec}`
+    const uri = `dat://${treeHash}@${feed}:${ver}/${pathspec}`
 
     cb(null, uri)
   }
