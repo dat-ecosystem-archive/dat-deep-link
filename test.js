@@ -24,7 +24,7 @@ test('generate(drive, filename, cb)', (t) => {
     const { protocol, auth, hostname, port } = url.parse(uri)
     t.equal('dat:', protocol, 'dat:// protocol present in uri')
     t.equal(64, auth.length, 'drive key is present in uri')
-    t.ok(auth === drive.key.toString('hex'), 'drive key matches uri key')
+    t.ok(hostname === drive.key.toString('hex'), 'drive key matches uri key')
     t.equal(1, parseInt(port), 'correct version given')
     drive.close()
     t.end()
