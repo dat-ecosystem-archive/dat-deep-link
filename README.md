@@ -19,17 +19,17 @@ version of the archive. The version is included along with the pathspec
 that points to the file in the archive.
 
 ```
-dat://dat-key[@tree-hash][:dat-version][/pathspec]
+dat://[tree-hash@]dat-key[:dat-version][/pathspec]
 ```
 
 where
 
-* `dat-key` is the public key for the DAT archive. *Required*
-* `tree-hash` is the root hash of the merkle tree for the metadata feed.
-  at `dat-version` *Optional*
+* `tree-hash` is the root hash of the merkle tree for the metadata feed. **Optional**
+* `dat-key` is the public key for the DAT archive. **Required**
+  at `dat-version` **Optional**
 * `dat-version` is the version of the DAT archive that should be checked
-  out and verified against
-* `pathspec` is the file or directory that should be verified
+  out and verified against **Optional**
+* `pathspec` is the file or directory that should be verified.  **Optional**
 
 ## Usage
 
